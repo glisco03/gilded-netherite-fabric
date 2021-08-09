@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
+	id 'fabric-loom' version '0.9-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -11,7 +11,17 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+	maven {
+		name = "TerraformersMC"
+		url = "https://maven.terraformersmc.com/"
+	}
+
 	 maven { url 'https://jitpack.io' }
+	maven { url "https://maven.shedaniel.me/" }
+
+	flatDir {
+		dirs 'libs'
+	}
 }
 
 dependencies {
@@ -24,12 +34,15 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// PigLib
-	modApi "com.github.Shnupbups:Piglib:1.0.1"
-	include "com.github.Shnupbups:Piglib:1.0.1"
+	modImplementation "com.Shnupbups:piglib:1.0.2+1.17-snapshot"
+	include "com.Shnupbups:Piglib:1.0.2+1.17-snapshot"
 
 	// Multi Item Lib
-	modImplementation 'com.github.OroArmor:Multi-Item-Lib:-SNAPSHOT'
-	include 'com.github.OroArmor:Multi-Item-Lib:-SNAPSHOT'
+	modImplementation 'com.oroarmor:Multi-Item-Lib:1.4.0'
+	include 'com.oroarmor:Multi-Item-Lib:1.4.0'
+
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:6.0.246-alpha"
+	modRuntime "me.shedaniel:RoughlyEnoughItems-fabric:6.0.246-alpha"
 }
 
 processResources {

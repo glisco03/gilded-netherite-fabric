@@ -28,7 +28,7 @@ public class ArmoredGildedElytraItem extends ArmorItem
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         UUID uUID = MODIFIERS[slot.getEntitySlotId()];
         builder.put(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(uUID, "Armor modifier", (double)getProtection(), EntityAttributeModifier.Operation.ADDITION));
-        builder.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uUID, "Armor toughness", (double)method_26353(), EntityAttributeModifier.Operation.ADDITION));
+        builder.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(uUID, "Armor toughness", (double)getToughness(), EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, new EntityAttributeModifier(uUID, "Armor knockback resistance", (double)getKnockbackResistance(), EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
     }
@@ -63,7 +63,7 @@ public class ArmoredGildedElytraItem extends ArmorItem
         return GildedElytraMaterial.ARMORED_GILDED.getKnockbackResistance();
     }
 
-    public float method_26353() {
+    public float getToughness() {
         return GildedElytraMaterial.ARMORED_GILDED.getToughness();
     }
 

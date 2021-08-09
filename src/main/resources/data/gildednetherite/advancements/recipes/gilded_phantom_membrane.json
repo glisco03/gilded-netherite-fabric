@@ -11,10 +11,10 @@
       "conditions": {
         "items": [
           {
-            "item": "minecraft:gold_nugget"
-          },
-          {
-            "item": "minecraft:phantom_membrane"
+            "items": [
+              "minecraft:gold_nugget",
+              "minecraft:phantom_membrane"
+            ]
           }
         ]
       }

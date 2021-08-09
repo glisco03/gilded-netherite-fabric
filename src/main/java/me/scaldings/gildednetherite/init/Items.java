@@ -1,6 +1,6 @@
 package me.scaldings.gildednetherite.init;
 
-import com.oroarmor.multi_item_lib.UniqueItemRegistry;
+import com.oroarmor.multiitemlib.api.UniqueItemRegistry;
 import me.scaldings.gildednetherite.init.items.*;
 import me.scaldings.gildednetherite.init.materials.GildedToolMaterial;
 import net.minecraft.entity.EquipmentSlot;

@@ -25,16 +25,12 @@
       "conditions": {
         "items": [
           {
-            "item": "gildednetherite:gilded_helmet"
-          },
-          {
-            "item": "gildednetherite:gilded_chestplate"
-          },
-          {
-            "item": "gildednetherite:gilded_leggings"
-          },
-          {
-            "item": "gildednetherite:gilded_boots"
+            "items": [
+              "gildednetherite:gilded_helmet",
+              "gildednetherite:gilded_chestplate",
+              "gildednetherite:gilded_leggings",
+              "gildednetherite:gilded_boots"
+            ]
           }
         ]
       }

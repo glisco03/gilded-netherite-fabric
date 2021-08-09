@@ -10,6 +10,8 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.ElytraEntityModel;
 import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
+import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
@@ -20,8 +22,11 @@ import net.minecraft.util.Identifier;
 public class GildedElytraFeatureRenderer<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M>
 {
     public static final Identifier GILDED_ELYTRA_SKIN = new Identifier(Items.MOD_ID, "textures/entity/gilded_elytra.png");
-    private final ElytraEntityModel<T> elytra = new ElytraEntityModel();
-    public GildedElytraFeatureRenderer(FeatureRendererContext<T, M> context) {super(context);}
+    private final ElytraEntityModel<T> elytra;
+    public GildedElytraFeatureRenderer(FeatureRendererContext<T, M> context, EntityModelLoader loader) {
+        super(context);
+        this.elytra = new ElytraEntityModel(loader.getModelPart(EntityModelLayers.ELYTRA));
+    }
 
     @Override
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l)

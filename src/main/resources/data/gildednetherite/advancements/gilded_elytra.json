@@ -25,7 +25,9 @@
       "conditions": {
         "items": [
           {
-            "item": "gildednetherite:gilded_elytra"
+            "items": [
+              "gildednetherite:gilded_elytra"
+            ]
           }
         ]
       }

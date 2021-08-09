@@ -8,28 +8,26 @@ import me.scaldings.gildednetherite.render.shield.ItemTextures;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.model.ArmorStandEntityModel;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemConvertible;
 
-public class GildedNetheriteClient implements ClientModInitializer
-{
+public class GildedNetheriteClient implements ClientModInitializer {
     @Override
-    public void onInitializeClient()
-    {
+    public void onInitializeClient() {
         ItemTextures.register();
         ModelProvider.registerModels();
         registerRenderer(Items.GILDED_SHIELD, new GildedShieldItemRenderer());
-        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((EntityType<? extends LivingEntity> entityType, LivingEntityRenderer<?, ?> entityRenderer, LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper registrationHelper) -> {
-            if (entityRenderer.getModel() instanceof PlayerEntityModel || entityRenderer.getModel() instanceof BipedEntityModel || entityRenderer.getModel() instanceof ArmorStandEntityModel)
-            {registrationHelper.register(new GildedElytraFeatureRenderer(entityRenderer)); }
+
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+            if (entityRenderer.getModel() instanceof PlayerEntityModel || entityRenderer.getModel() instanceof BipedEntityModel || entityRenderer.getModel() instanceof ArmorStandEntityModel) {
+                registrationHelper.register(new GildedElytraFeatureRenderer(entityRenderer, context.getModelLoader()));
+            }
         });
     }
 
-    private static void registerRenderer(ItemConvertible item, BuiltinItemRendererRegistry.DynamicItemRenderer itemRenderer)
-    {BuiltinItemRendererRegistry.INSTANCE.register(item, itemRenderer);}
+    private static void registerRenderer(ItemConvertible item, BuiltinItemRendererRegistry.DynamicItemRenderer itemRenderer) {
+        BuiltinItemRendererRegistry.INSTANCE.register(item, itemRenderer);
+    }
 }

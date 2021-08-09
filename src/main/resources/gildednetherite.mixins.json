@@ -1,13 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "me.scaldings.gildednetherite.mixins",
+  "package": "me.scaldings.gildednetherite.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-
+    "BuiltinModelItemRendererMixin"
   ],
   "client": [
-
   ],
   "injectors": {
     "defaultRequire": 1
